@@ -10,7 +10,8 @@ section.jumbotron.text-center
         .col-md-4 id="ep#{film['episode_id']}"
           .card.mb-4.shadow-sm
             svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Thumbnail") focusable="false" height="225" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg" 
-              image height="100%" width="100%" xlink:href="/assets/sw#{film['episode_id']}.png" 
+              - image = asset_url("sw#{film['episode_id']}.png")
+              image height="100%" width="100%" xlink:href="#{image}" 
             .card-body
               p.card-text= "EP #{film['episode_id']}: #{film['title']}"
               .d-flex.justify-content-between.align-items-center
