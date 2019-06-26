@@ -6,3 +6,11 @@ p.lead
   .col-4 = "Director: #{@film['director']}"
   .col-4 = "Producer: #{@film['producer']}"
   .col-4 = "Release Date: #{@film['release_date']}"
+
+.row
+  h4 Characters
+.row
+  ul.list-unstyled
+    - @characters.each do |character|
+      - cache character do
+        li= character["name"]

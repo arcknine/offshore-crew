@@ -10,4 +10,14 @@ module ApplicationHelper
     
     resp.parsed_response
   end
+
+  def get_list(list, type)
+    results = []
+    list.each do |item|
+      id  = item.match(/#{type}\/([0-9]+)\//)[1]
+      results << api_request(type, id: id)
+    end; nil
+
+    results
+  end
 end
