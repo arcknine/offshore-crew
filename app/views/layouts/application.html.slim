@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title OffshoreCrew
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand href="#"  The Offshore Crew
+      button.navbar-toggler aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExampleDefault" data-toggle="collapse" type="button" 
+        span.navbar-toggler-icon
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link href="#{root_path}" 
+              | Home
+              / span.sr-only (current)
+        = form_tag home_search_path, class: "form-inline my-2 my-lg-0"
+          = text_field_tag 'keyword', nil, class: "form-control mr-sm-2", 'aria-label' => "search", placeholder: "Search"
+          button.btn.btn-secondary.my-2.my-sm-0 type="submit" Search
+
+    main.container role="main"
+      = yield
+    / .alert.alert-success.pop-up-alert.hide role="alert" 
+    /   span.message A simple success alert with
+    /   button.close aria-label="Close" data-fade="alert" type="button" 
+    /     span aria-hidden="true" &times;
+
+    / .alert.alert-danger.pop-up-alert.hide role="alert" 
+    /   span.message A simple success alert with
+    /   button.close aria-label="Close" data-fade="alert" type="button" 
+    /     span aria-hidden="true" &times;

@@ -1,0 +1,8 @@
+h1.mt-5
+  = "EP #{@film['episode_id']}: #{@film['title']}"
+p.lead
+  = @film['opening_crawl']
+.row.mb-3.text-center
+  .col-4 = "Director: #{@film['director']}"
+  .col-4 = "Producer: #{@film['producer']}"
+  .col-4 = "Release Date: #{@film['release_date']}"
