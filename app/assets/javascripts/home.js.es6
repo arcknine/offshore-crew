@@ -48,8 +48,11 @@ var load_favorites = () => {
 
     // set films to 1st in list
     var fav_div = $(`#ep${value}`);
-    fav_div.remove();
-    $('#film-list').prepend(`<div class="col-md-4" id="ep${value}">${fav_div.html()}</div>`);
+    console.log(fav_div);
+    if (fav_div.html() != undefined) {
+      fav_div.remove();
+      $('#film-list').prepend(`<div class="col-md-4" id="ep${value}">${fav_div.html()}</div>`);
+    }
   });
   
 }
