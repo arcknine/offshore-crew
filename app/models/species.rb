@@ -8,7 +8,7 @@ class Species < ApplicationRecord
 
     results.each do |result|
       hash = result.select { |k,v| allowed_keys(Species).include?(k) }
-      hash["planet_id"] = result["homeworld"].nil? ? nil : get_id('planets', result["homeworld"])
+      hash["planet_id"] = result["homeworld"].nil? ? 1 : get_id('planets', result["homeworld"])
       Species.create!(hash)
     end
 

@@ -67,7 +67,8 @@ p.lead
       - @film.species.each do |s|
         li
           - str = ""
-          - ["classification", "designation", "average_height", "average_lifespan", "eye_colors", "hair_colors", "skin_colors", "language", "planet_id"]   .each do |keys|
+          - ["classification", "designation", "average_height", "average_lifespan", "eye_colors", "hair_colors", "skin_colors", "language"]   .each do |keys|
             - str += "<li>#{keys.to_s.humanize}: #{s.try(keys)}<li>"
+            - str += "<li>Homeworld: #{s.planet.name}</li>"
           span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
             = s.name
