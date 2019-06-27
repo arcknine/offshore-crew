@@ -1,8 +1,7 @@
 module ApplicationHelper
-  def api_request(type, options = {})
-    url = "https://swapi.co/api/#{type}/"
-    url += "#{options[:id]}/" unless options[:id].nil?
-    url += "?search=#{options[:keyword]}" unless options[:keyword].nil?
+  def api_request(url)
+    # url += "#{options[:id]}/" unless options[:id].nil?
+    # url += "?search=#{options[:keyword]}" unless options[:keyword].nil?
 
     resp = HTTParty.get url
     
@@ -19,5 +18,15 @@ module ApplicationHelper
     end; nil
 
     results
+  end
+
+  def get_id(type, str)
+    str.match(/#{type}\/([0-9]+)\//)[1]
+  end
+
+  def allowed_keys(model)
+    keys = []
+    model.new.attributes.each { |k,v| keys << k }
+    keys
   end
 end

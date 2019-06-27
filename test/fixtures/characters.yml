@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  birth_year: 
+  eye_color: 
+  gender: 
+  hair_color: 
+  height: 
+  mass: 
+  skin_color: 
+  homeworld: MyString
+
+two:
+  name: 
+  birth_year: 
+  eye_color: 
+  gender: 
+  hair_color: 
+  height: 
+  mass: 
+  skin_color: 
+  homeworld: MyString
