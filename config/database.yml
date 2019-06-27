@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: OffshoreCrew_production
-  username: OffshoreCrew
-  password: <%= ENV['OFFSHORECREW_DATABASE_PASSWORD'] %>
+  host: u28rhuskh0x5paau.cbetxkdyhwsb.us-east-1.rds.amazonaws.com 
+  database: tspnqrst6kd8pts3
+  username: vuqxixnm09ml2gq1
+  password: <%=  Rails.application.credentials[:mysql][:password] %>
