@@ -52,4 +52,5 @@ production:
   host: u28rhuskh0x5paau.cbetxkdyhwsb.us-east-1.rds.amazonaws.com 
   database: tspnqrst6kd8pts3
   username: vuqxixnm09ml2gq1
-  password: <%= ENV['OFFSHORECREW_DATABASE_PASSWORD'] || Rails.application.credentials.dig(:mysql, :password, :production) %>
+  # password: <%= ENV['OFFSHORECREW_DATABASE_PASSWORD'] || Rails.application.credentials.dig(:mysql, :password, :production) %>
+  password: r3w014sz7110643a
