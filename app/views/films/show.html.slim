@@ -1,16 +1,73 @@
 h1.mt-5
-  = "EP #{@film['episode_id']}: #{@film['title']}"
+  = "EP #{@film.episode_id}: #{@film.title}"
 p.lead
-  = @film['opening_crawl']
+  = @film.opening_crawl
 .row.mb-3.text-center
-  .col-4 = "Director: #{@film['director']}"
-  .col-4 = "Producer: #{@film['producer']}"
-  .col-4 = "Release Date: #{@film['release_date']}"
+  .col-4 
+    strong Director: 
+    = @film.director
+  .col-4
+    strong Producer:  
+    = @film.producer
+  .col-4 
+    strong Release Date: 
+    = @film.release_date
 
 .row
-  h4 Characters
-.row
-  ul.list-unstyled
-    - @characters.each do |character|
-      - cache character do
-        li= character["name"]
+  .col
+    h4 Characters
+  .col
+    h4 Planets
+  .col
+    h4 Starships
+  .col
+    h4 Vehicles
+  .col
+    h4 Species
+.row.swapi-data
+  .col
+    ul.list-unstyled
+      - @film.characters.each do |c|
+        li
+          - str = ""
+          - ["birth_year", "eye_color", "gender", "hair_color", "height", "mass", "skin_color"].each do |keys|
+            - str += "<li>#{keys.to_s.humanize}: #{c.try(keys)}<li>"
+          - str += "<li>Homeworld: #{c.planet.name}</li>"
+          span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
+            = c.name
+  .col
+    ul.list-unstyled
+      - @film.planets.each do |p|
+        li
+          - str = ""
+          - ["diameter", "rotation_period", "orbital_period", "gravity", "population", "climate", "terrain", "surface_water"].each do |keys|
+            - str += "<li>#{keys.to_s.humanize}: #{p.try(keys)}<li>"
+          span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
+            = p.name
+  .col
+    ul.list-unstyled
+      - @film.starships.each do |s|
+        li
+          - str = ""
+          - ["model", "starship_class", "manufacturer", "cost_in_credits", "length", "crew", "passengers", "max_atmosphering_speed", "hyperdrive_rating", "mglt", "cargo_capacity", "consumables"] .each do |keys|
+            - str += "<li>#{keys.to_s.humanize}: #{s.try(keys)}<li>"
+          span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
+            = s.name
+  .col
+    ul.list-unstyled
+      - @film.vehicles.each do |v|
+        li 
+          - str = ""
+          - ["model", "vehicle_class", "manufacturer", "length", "cost_in_credits", "crew", "max_atmosphering_speed", "cargo_capacity", "consumables"]  .each do |keys|
+            - str += "<li>#{keys.to_s.humanize}: #{v.try(keys)}<li>"
+          span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
+            = v.name
+  .col
+    ul.list-unstyled
+      - @film.species.each do |s|
+        li
+          - str = ""
+          - ["classification", "designation", "average_height", "average_lifespan", "eye_colors", "hair_colors", "skin_colors", "language", "planet_id"]   .each do |keys|
+            - str += "<li>#{keys.to_s.humanize}: #{s.try(keys)}<li>"
+          span data-html="true" data-toggle="tooltip" title=("<ul class='list-unstyled'>#{str}</ul>")
+            = s.name

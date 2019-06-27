@@ -1,21 +1,19 @@
 section.jumbotron.text-center
   .container
-    h1 = "Search Result(s): #{@list['count']}"
+    h1 = "Search Result(s): #{@list.count}"
   
 .album.py-5.bg-light
   .container
     .row#film-list
-      - @list['results'] = @list['results'].sort_by{|e| e['episode_id']}
-      - @list['results'].each do |film|
-        .col-md-4 id="ep#{film['episode_id']}"
+      - @list.each do |film|
+        .col-md-4 id="ep#{film.episode_id}"
           .card.mb-4.shadow-sm
             svg.bd-placeholder-img.card-img-top aria-label=("Placeholder: Thumbnail") focusable="false" height="225" preserveaspectratio=("xMidYMid slice") role="img" width="100%" xmlns="http://www.w3.org/2000/svg" 
-              - image = asset_url("sw#{film['episode_id']}.png")
+              - image = asset_url("sw#{film.episode_id}.png")
               image height="100%" width="100%" xlink:href="#{image}" 
             .card-body
-              p.card-text= "EP #{film['episode_id']}: #{film['title']}"
+              p.card-text= "EP #{film.episode_id}: #{film.title}"
               .d-flex.justify-content-between.align-items-center
                 .btn-group
-                  - film_id = film['url'].match(/films\/([0-9])\//)[1]
-                  = link_to 'View', film_path(film_id), class: "btn btn-sm btn-outline-secondary"
-                  button.btn.btn-sm.btn-outline-secondary.fav-button data-id="#{film['episode_id']}" type="button" data-title="EP #{film['episode_id']}: #{film['title']}" Favorite
+                  = link_to 'View', film_path(film.id), class: "btn btn-sm btn-outline-secondary"
+                  button.btn.btn-sm.btn-outline-secondary.fav-button data-id="#{film.episode_id}" type="button" data-title="EP #{film.episode_id}: #{film.title}"  Favorite

@@ -25,8 +25,6 @@ module ApplicationHelper
   end
 
   def allowed_keys(model)
-    keys = []
-    model.new.attributes.each { |k,v| keys << k }
-    keys
+    model.new.attributes.keys
   end
 end

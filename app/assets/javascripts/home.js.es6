@@ -37,6 +37,7 @@ var load_favorites = () => {
   var storage_name = 'favorites';
   var stored_ids = window.localStorage.getItem(storage_name);
 
+  
   if (stored_ids == null || stored_ids == '') {
     return false;
   }
@@ -59,6 +60,8 @@ var load_favorites = () => {
  
 $( document ).on('turbolinks:load', function() {
   load_favorites();
+
+  $('[data-toggle="tooltip"]').tooltip();
 
   $('.fav-button').on('click', function() {
     var id = $(this).data('id').toString();
