@@ -20,7 +20,8 @@ The Offshore Crew Technical Examl using https://swapi.co/.
 2. MySQL is required
 3. `bundle install` to install gems
 4. `rake db:create` to create localhost database
-5. `rake db:seed` to populate database by fetching swapi data
-6. `rails s` to run application
-7. go to http://localhost:3000 to view appliaction 
+5. `rake db:migrate` to start creating database tables
+6. `rake db:seed` to populate database by fetching swapi data
+7. `rails s` to run application
+8. go to http://localhost:3000 to view appliaction 
 
